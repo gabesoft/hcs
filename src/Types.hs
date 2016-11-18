@@ -5,7 +5,7 @@ module Types where
 
 import Control.Concurrent.STM
 import Control.Lens
-import Data.Map as M
+import Data.Map.Strict as M
 import Network (HostName, PortNumber)
 import System.IO (Handle)
 
@@ -29,7 +29,7 @@ data Message
   deriving (Eq, Show)
 
 data Client = Client
-  { _clientName :: ClientName
+  { _clientName :: TVar ClientName
   , _clientHost :: HostName
   , _clientPort :: PortNumber
   , _clientHandle :: Handle
